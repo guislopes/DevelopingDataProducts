@@ -1,0 +1,55 @@
+---
+title: "R Markdown & Plotly"
+author: "GuiLopes"
+date: "7/10/2020"
+output: ioslides_presentation
+---
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+```
+
+## mtcars: code
+I work for a car company.
+
+The execs recently asked the data science team to find a way to increase mileage per gallon of their cars.
+
+Analysis of data from a random sample of cars revealed an association between mileage per gallon and car weight.
+
+This is the code we used:
+
+```{r, eval = FALSE, echo = TRUE, warning = FALSE}
+suppressPackageStartupMessages(library(plotly))
+
+plot_ly(mtcars, 
+        x = mtcars$wt, 
+        y = mtcars$mpg, 
+        type = "scatter", 
+        mode = "markers")
+```
+
+## mtcars: Plotly plot
+The plot below is the output of the code:
+
+```{r, echo = FALSE, warning = FALSE}
+suppressPackageStartupMessages(library(plotly))
+plot_ly(mtcars, x = mtcars$mpg, y = mtcars$wt, type = "scatter", mode = "markers")
+```
+
+## mtcars: results
+As you can see, it *appears* that the lighter the car the more miles per gallon. 
+However, the execs were not convinced that a solution would be to invest in car weight technology.
+
+We then estimated the probability of finding this association (p-value) if there was 
+no association between car weight and mileage per gallon (null hypothesis)?
+
+```{r, echo = TRUE}
+mpgwt <- lm(mtcars$mpg ~ mtcars$wt)
+summary(mpgwt)$coefficients[2,4] %>% format(scientific = FALSE)
+```
+
+The probability is less than 0.05. The execs were convinced.
+
+## mtcars: assignment
+
+Thank you!
