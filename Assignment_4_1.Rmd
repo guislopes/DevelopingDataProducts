@@ -1,0 +1,41 @@
+---
+title: "Coursera: Developing Data Products // R Markdown and Leaflet Assignment"
+author: "Gui Lopes"
+date: "7/10/2020 10:58AM"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## Welcome to the folklore of Lencois Maranhenses
+
+The region marked in the map is called "Lencois Maranhenses".
+
+Legend says a Dutch battle ship intercepted a piracy attempt in the Atlantic 
+Ocean, but the pirates managed to escape by suddenly diverging their route to a 
+location that at the time was unknown to Europeans (the "Lencois Maranhenses").
+
+The pirates buried the treasure in the dunes, but their ship sunk on their way 
+back to the Caribbeans along with all records of the treasure's location.
+
+One pirate stayed in-land after falling in love with a native. The only hint
+he shared was that the treasure is near a bank of green water.
+
+Is this true? No one really knows. If found, this treasure would have an 
+immeasurable value from an archaeological point of view.
+
+The movie "The House of Sand" was filmed in this region, in case you're curious.
+
+https://en.wikipedia.org/wiki/The_House_of_Sand
+
+This mind blowing place also happens to be near my hometown.
+
+```{r}
+library(leaflet)
+map <- leaflet() %>% 
+  addTiles() %>%
+  addMarkers(lat = -2.4859, lng = -43.1284, popup = "Lencois Maranhenses")
+map
+```
